@@ -14,7 +14,7 @@ retrospective
 this was a fun exercise that increased my awareness of applying an analytical perspective to modelling a realworld problem with data structures and code.
 with that said, most of this is implemented incredibly naively. i've abused inheritence and typing in the process of learning.
 the program logic is disjointed and convoluted. i directly access data instead of using the object's provided methods in some cases.
-all of this these were decisions done in the moment to get things to work, and as i now try to extend the code base or add views i am running into the limitations set by lack of foresight that comes with inexperience.
+all of these were decisions made in the moment to get things to work, and as i now try to extend the code base or add views i am running into the limitations set by lack of foresight that comes with inexperience.
 
 what i've learned:
 
