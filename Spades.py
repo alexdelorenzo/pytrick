@@ -140,7 +140,7 @@ class Spades(Game):
 	def _play_card(self, player):
 		self.table.add_card_to_group(
 			self.players[player].play(
-				self.players[player].selectCard()), 0)
+				self.players[player].select_card()), 0)
 
 	def _take_trick(self):
 		trickTaker = self.rules.who_takes_trick(self.table.groups[0])
@@ -150,7 +150,7 @@ class Spades(Game):
 		hand = self.table.remove_group(0)
 
 		for card in range(len(hand)):
-			self.deck.returnToStack(hand.pop())
+			self.deck.return_to_stack(hand.pop())
 
 	def initiate_players(self, intHumans):
 		self.players = [PlayerActions(x) for x in range(0, intHumans)]
@@ -211,14 +211,14 @@ class Spades(Game):
 		for player in self.players:
 			who = self.next_player()
 			print("Player's Turn: ", who)
-			self.players[who].lookAtHand()
+			self.players[who].look_at_hand()
 
 			best = self.rules.highest_card_in_hand(self.players[who].hand)
 			playable = self.rules.playable_cards_in_hand(self.table.groups[0], self.players[who].hand)
 			print("\nBest card in hand: ", best)
 			print("Playable cards in hand: ", playable)
 
-			print("Cards on table: ", self.players[who].lookAtHand(self.table.groups[0]), "\n")
+			print("Cards on table: ", self.players[who].look_at_hand(self.table.groups[0]), "\n")
 
 			self._play_card(who)
 			self._hand_counter()

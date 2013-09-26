@@ -34,7 +34,7 @@ class Game(object):
         self.dealer.deal(self.deck, self.players[1], 12)
         self.dealer.deal(self.deck, self.players[0], 12)
         print(self.players[1].hand[1])
-        self.players[1].lookAtHand()
+        self.players[1].look_at_hand()
         print('    Create table object')
         t = Table2()
 

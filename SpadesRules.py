@@ -5,18 +5,21 @@ from Core.Hand import Hand
 from PlayerActions import PlayerActions
 import copy
 
+
 class SpadesDealer(Dealer, PlayerActions):
 
     def __init__(self):
         super(SpadesDealer, self).__init__()
 
+
 class SpadesRules(TrickGames):
 
     def __init__(self):
         super(SpadesRules, self).__init__()
-        self.replaceTrump('Spades')
+        self.replace_trump('Spades')
 
-    def return_suit(self, hand_obj):
+    @staticmethod
+    def return_suit(hand_obj):
         if len(hand_obj) is not 0:
             return hand_obj[-1].suit
         else:
@@ -39,7 +42,7 @@ class SpadesRules(TrickGames):
         return [sorted_hand[card][2] for card in range(len(sorted_hand))][0:4]
 
     def search_trump(self, hand_obj, return_card_obj=False):
-        if self.isTrumpInHand(hand_obj) is True:
+        if self.is_trump_in_hand(hand_obj) is True:
             trumps = []
             for x in range(0, len(hand_obj)):
                 for y in range(0, len(self.trump)):
