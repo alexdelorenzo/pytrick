@@ -6,7 +6,6 @@ class TrickGames(Game):
     def __init__(self):
         super(TrickGames, self).__init__()
         self.trump = ['']
-        print(self.trump[0])
         self.bln_trump = False
 
     def replace_trump(self, trump, index=0):
