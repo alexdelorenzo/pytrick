@@ -143,7 +143,7 @@ class Spades(Game):
 				self.players[player].selectCard()), 0)
 
 	def _take_trick(self):
-		trickTaker = self.rules.whoTakesTrick(self.table.groups[0])
+		trickTaker = self.rules.who_takes_trick(self.table.groups[0])
 		self.ledger.trick_taker = trickTaker
 		print("Trick Taker: Player ", trickTaker)
 		self.ledger.players[trickTaker]['wins'] += 1
@@ -213,8 +213,8 @@ class Spades(Game):
 			print("Player's Turn: ", who)
 			self.players[who].lookAtHand()
 
-			best = self.rules.highestCardInHand(self.players[who].hand)
-			playable = self.rules.playableCardsInHand(self.table.groups[0], self.players[who].hand)
+			best = self.rules.highest_card_in_hand(self.players[who].hand)
+			playable = self.rules.playable_cards_in_hand(self.table.groups[0], self.players[who].hand)
 			print("\nBest card in hand: ", best)
 			print("Playable cards in hand: ", playable)
 
