@@ -19,6 +19,7 @@ class Ledger(object):
 	@property
 	def hand(self):
 		return self.game['hand']
+
 	@hand.setter
 	def hand(self, val):
 		self.game['hand'] = val
@@ -26,6 +27,7 @@ class Ledger(object):
 	@property
 	def round(self):
 		return self.game['round']
+
 	@round.setter
 	def round(self, val):
 		self.game['round'] = val
@@ -33,6 +35,7 @@ class Ledger(object):
 	@property
 	def trick_taker(self):
 		return self.game['trick_taker']
+
 	@trick_taker.setter
 	def trick_taker(self, val):
 		self.game['trick_taker'] = val
@@ -62,7 +65,7 @@ class Spades(Game):
 			return False
 
 	@property
-	def _reached_500_yet(self):
+	def _is_game_over(self):
 		for who, plyr_obj in enumerate(self.players):
 			if self.ledger.players[who]['score'] >= 500:
 				return True
@@ -174,14 +177,14 @@ class Spades(Game):
 
 	def new_game(self):
 		self.generate_ledger()
-		while self._reached_500_yet is False:
+		while self._is_game_over is False:
 			self._print_scores()
 			self.next_round()
 			self._print_scores()
-			self.dealCards(52 / len(self.players))
+			self.deal_cards(52 / len(self.players))
 			self._assign_card_owners()
 
-		if self._reached_500_yet is True:
+		if self._is_game_over is True:
 			print("Motherfucking fuck the game is over.")
 		self._print_scores()
 
@@ -197,6 +200,8 @@ class Spades(Game):
 			self.next_hand()
 			card_in_play = self._card_in_play
 
+		## This logic can be moved to a new function
+		# {
 		bid_set, win_set, difference_set = [], [], []
 
 		for who, plyr_obj in enumerate(self.players):
@@ -207,6 +212,7 @@ class Spades(Game):
 			difference_set.append((win_set[who] - bid_set[who]))
 
 		self._wins_to_score(win_set, difference_set)
+		# }
 
 
 	def next_hand(self):
@@ -218,12 +224,16 @@ class Spades(Game):
 			print("Player's Turn: ", who)
 			self.players[who].look_at_hand()
 
+
+			## This needs to be moved into a function
+			# {
 			best = self.rules.highest_card_in_hand(self.players[who].hand)
 			playable = self.rules.playable_cards_in_hand(self.table.groups[0], self.players[who].hand)
 			print("\nBest card in hand: ", best)
 			print("Playable cards in hand: ", playable)
 
 			print("Cards on table: ", self.players[who].look_at_hand(self.table.groups[0]), "\n")
+			# }
 
 			self._play_card(who)
 			self._hand_counter()
