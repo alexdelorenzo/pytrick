@@ -214,7 +214,7 @@ class Spades(Game):
 		print("Hand ", self.ledger.game['hand'])
 
 		for player in self.players:
-			who = self.next_player()
+			who = self.next_player
 			print("Player's Turn: ", who)
 			self.players[who].look_at_hand()
 
@@ -230,5 +230,5 @@ class Spades(Game):
 
 		self._take_trick()
 		self.ledger.hand = -1
-		self.table.newGroup()
+		self.table.new_group()
 
