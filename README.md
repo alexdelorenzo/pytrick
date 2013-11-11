@@ -7,6 +7,9 @@ this was a small project to get familiar with python that I wrote in March 2013.
 
 i'm currently refactoring with sane naming, organization and unit tests.
 
+If you're interested I'm throwing a web interface on top of this, check my repos.
+
+Copyright 2013 Alex DeLorenzo. Released under GPL v3.
 
 retrospective
 =============
